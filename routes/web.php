@@ -29,5 +29,8 @@ use App\Http\Controllers\SongController;
  
 Route::get('/songs', [SongController::class, 'show'])->name('songs');
 Route::get('/songs/create', [SongController::class, 'create'])->name('songs.create');
+Route::get('/song/delete/{id}', [SongController::class, 'delete'])->name('songs.delete');
+Route::get('/song/update/{id}', [SongController::class, 'showUpdateForm'])->name('songs.updateform');
+Route::put('/song/update/{id}', [SongController::class, 'update'])->name('songs.update');
  
 Route::post('/songs', [SongController::class, 'store'])->name('songs.store');

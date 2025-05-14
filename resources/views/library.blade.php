@@ -1,17 +1,20 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muziekbibliotheek</title>
-</head>
-<body>
-    <nav>
-        <a href="{{ route('home') }}">Home</a>
-        <a href="{{ route('library') }}">Muziekbibliotheek</a>
-        <a href="{{ route('songs') }}">Muzieknummers</a>
-    </nav>
+@extends('layouts.master')
  
+@section('content')
     <h1>Muziekbibliotheek Pagina</h1>
-</body>
-</html>
+ 
+    <h2>Alle songs</h2>
+ 
+    <ul>
+       
+    @foreach ($songs as $song)
+        <div>
+            <h3>{{ $song->song_name }} - {{ $song->author }} ({{ $song->release_year }})</h3>
+            <a href="{{ route('songs.updateform', ['id' => $song->id]) }}">Update</a>
+            <a href="{{ route('songs.delete', ['id' => $song->id]) }}">Delete</a>
+        </div>
+    @endforeach
+ 
+    </ul>
+ 
+@endsection
